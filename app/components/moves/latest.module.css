@@ -1,0 +1,19 @@
+.root {
+  @apply my-section-gap;
+}
+
+.header {
+  @apply flex items-baseline justify-between mb-5;
+}
+
+.headerTitle {
+  @apply font-bold text-xl;
+}
+
+.item {
+  @apply mb-4 last:mb-0;
+}
+
+.button {
+  @apply mt-8;
+}

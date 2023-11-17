@@ -1,0 +1,37 @@
+.root {
+  @apply flex text-base items-center justify-between p-5 rounded-md bg-color-background-darker w-full relative;
+}
+
+.tag {
+  @apply flex items-center;
+
+  > span {
+    @apply w-3 h-3 rounded-full flex-shrink-0 mr-2;
+  }
+}
+
+.amount {
+  @apply flex items-center;
+
+  span {
+    .root_type_out & {
+      @apply text-red-500;
+
+      &:before {
+        @apply content-["-"] pr-1;
+      }
+    }
+
+    .root_type_in & {
+      @apply text-green-600;
+
+      &:before {
+        @apply content-["+"] pr-1;
+      }
+    }
+  }
+}
+
+.recurrentIcon {
+  @apply flex-shrink-0 w-[0.875rem] h-[0.875rem] mr-3;
+}

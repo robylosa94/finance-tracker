@@ -1,0 +1,21 @@
+.root {
+  @apply my-section-gap;
+}
+
+.title {
+  @apply font-bold text-xl mb-4;
+}
+
+.amount {
+  @apply text-5xl;
+}
+
+.actions {
+  @apply flex mt-8;
+
+  > div {
+    &:not(:last-child) {
+      @apply mr-4;
+    }
+  }
+}

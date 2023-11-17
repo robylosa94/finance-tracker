@@ -1,0 +1,5 @@
+.root {
+  > * {
+    @apply tracking-wide opacity-50 inline-flex items-center justify-center text-sm transition-opacity hover:opacity-100;
+  }
+}

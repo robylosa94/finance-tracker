@@ -1,0 +1,4 @@
+.root {
+  --w: calc(var(--container) + var(--container-gutter) * 2);
+  @apply max-w-[var(--w)] w-full mx-auto px-container-gutter;
+}

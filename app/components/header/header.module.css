@@ -1,0 +1,19 @@
+.container {
+  @apply flex items-center justify-between h-20;
+}
+
+.user {
+  @apply flex items-center text-sm;
+}
+
+.userAvatar {
+  @apply rounded-full w-10 h-10 bg-red-500 flex-shrink-0 mr-3;
+}
+
+.actions {
+  @apply flex items-center;
+}
+
+.statsButton {
+  @apply mr-5;
+}

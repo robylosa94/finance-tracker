@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #fff;
+  --color-background-darker: #efefef;
+  --color-foreground: #000;
+  --color-primary: #49f770;
+  --color-primary-darker: #0ae63b;
+  --container: 43.75rem;
+  --container-gutter: 1.25rem;
+  --section-gap: 4.375rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #001e3c;
+    --color-background-darker: #00162d;
+    --color-foreground: #fff;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
