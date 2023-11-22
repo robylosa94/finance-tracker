@@ -5,7 +5,7 @@ import MovesCard from "./card"
 
 const data = [
   {
-    type: "out",
+    type: "expense",
     isRecurrent: false,
     tag: {
       color: "#0000ff",
@@ -14,16 +14,16 @@ const data = [
     amount: 100,
   },
   {
-    type: "in",
+    type: "income",
     isRecurrent: false,
     tag: {
-      color: "	#009320",
+      color: "#009320",
       name: "Stipendio",
     },
     amount: 100,
   },
   {
-    type: "out",
+    type: "expense",
     isRecurrent: true,
     tag: {
       color: "#ff0000",

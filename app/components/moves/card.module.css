@@ -1,5 +1,5 @@
 .root {
-  @apply flex text-base items-center justify-between p-5 rounded-md bg-color-background-darker w-full relative;
+  @apply flex text-base items-center justify-between p-5 rounded-md bg-color-background-darker w-full relative hover:bg-color-background-darkest transition-colors;
 }
 
 .tag {
@@ -14,7 +14,7 @@
   @apply flex items-center;
 
   span {
-    .root_type_out & {
+    .root_type_expense & {
       @apply text-red-500;
 
       &:before {
@@ -22,7 +22,7 @@
       }
     }
 
-    .root_type_in & {
+    .root_type_income & {
       @apply text-green-600;
 
       &:before {

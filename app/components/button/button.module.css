@@ -11,7 +11,7 @@
   }
 
   > * {
-    @apply inline-flex items-center justify-center rounded-md text-black bg-color-primary px-4 py-3 text-sm font-semibold hover:bg-color-primary-darker focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-color-primary transition-colors text-center;
+    @apply inline-flex items-center justify-center rounded-md text-white bg-color-primary px-4 py-3 text-sm font-semibold hover:bg-color-primary-darker focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-color-primary transition-colors text-center;
   }
 
   svg {

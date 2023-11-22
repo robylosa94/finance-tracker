@@ -1,0 +1,23 @@
+.root {
+  @apply fixed top-0 left-0 w-full h-full bg-color-background/80;
+
+  > div {
+    @apply h-full;
+  }
+}
+
+.wrapper {
+  @apply h-full p-6;
+}
+
+.inner {
+  @apply bg-color-background border-2 border-color-primary rounded-3xl p-6 min-h-full;
+}
+
+.header {
+  @apply flex items-center justify-between mb-5;
+}
+
+.headerTitle {
+  @apply text-2xl;
+}

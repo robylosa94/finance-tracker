@@ -9,11 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "color-background": "var(--color-background)",
-        "color-background-darker": "var(--color-background-darker)",
-        "color-foreground": "var(--color-foreground)",
-        "color-primary": "var(--color-primary)",
-        "color-primary-darker": "var(--color-primary-darker)",
+        "color-background": "rgba(var(--color-background), <alpha-value>)",
+        "color-background-darker": "rgba(var(--color-background-darker), <alpha-value>)",
+        "color-background-darkest": "rgba(var(--color-background-darkest), <alpha-value>)",
+        "color-foreground": "rgba(var(--color-foreground), <alpha-value>)",
+        "color-primary": "rgba(var(--color-primary), <alpha-value>)",
+        "color-primary-darker": "rgba(var(--color-primary-darker), <alpha-value>)",
       },
       spacing: {
         container: "var(--container)",

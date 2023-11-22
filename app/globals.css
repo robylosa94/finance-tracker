@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --color-background: #fff;
-  --color-background-darker: #efefef;
-  --color-foreground: #000;
-  --color-primary: #49f770;
-  --color-primary-darker: #0ae63b;
+  --color-background: 255, 255, 255;
+  --color-background-darker: 239, 239, 239;
+  --color-background-darkest: 230, 230, 230;
+  --color-foreground: 0, 0, 0;
+  --color-primary: 0, 69, 137;
+  --color-primary-darker: 0, 55, 110;
   --container: 43.75rem;
   --container-gutter: 1.25rem;
   --section-gap: 4.375rem;
@@ -15,13 +16,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #001e3c;
-    --color-background-darker: #00162d;
-    --color-foreground: #fff;
+    --color-background: 0, 30, 60;
+    --color-background-darker: 0, 22, 45;
+    --color-background-darkest: 0, 18, 36;
+    --color-foreground: 255, 255, 255;
   }
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
 }

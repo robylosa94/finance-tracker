@@ -1,0 +1,49 @@
+.root {
+  @apply mb-4 last:mb-0 w-full;
+
+  @apply md:mb-5;
+
+  &.root_50 {
+    @apply md:w-1/2;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    @apply bg-white text-black h-[2.8125rem] w-full rounded-[.25rem] px-5 text-base block;
+  }
+
+  input[type="number"] {
+    @apply appearance-none;
+
+    &::-webkit-inner-spin-button {
+      @apply appearance-none;
+    }
+  }
+
+  textarea {
+    @apply min-h-[11.875rem] pt-2;
+
+    @apply md:pt-3;
+  }
+}
+
+.label {
+  @apply text-base block mb-3;
+}
+
+.selectWrapper {
+  @apply relative;
+
+  select {
+    @apply appearance-none;
+  }
+
+  svg {
+    @apply absolute top-1/2 -translate-y-1/2 right-5 z-[1] pointer-events-none;
+
+    @apply max-md:w-3;
+  }
+}
