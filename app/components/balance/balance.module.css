@@ -8,6 +8,10 @@
 
 .amount {
   @apply text-5xl;
+
+  &.amount_negative {
+    @apply text-red-500;
+  }
 }
 
 .actions {

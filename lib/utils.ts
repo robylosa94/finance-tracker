@@ -6,3 +6,8 @@ export const currencyFormatter = (amount: number) => {
 
   return formatter.format(amount)
 }
+
+export const floatingConverter = (amount: string) => {
+  const amountWithoutDots = amount.replace(/\./g, "")
+  return parseFloat(amountWithoutDots.replace(",", "."))
+}

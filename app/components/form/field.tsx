@@ -6,9 +6,11 @@ import { NumericFormat } from "react-number-format"
 import s from "./field.module.css"
 
 interface Props {
+  autoFocus?: boolean | undefined
   children?: React.ReactNode
   className?: string | undefined
   disabled?: boolean | undefined
+  innerRef?: any | undefined
   maxLength?: number | undefined
   name: string
   nolabel?: boolean | undefined
@@ -35,9 +37,11 @@ interface Props {
 }
 
 function FormField({
+  autoFocus,
   children,
   className,
   disabled,
+  innerRef,
   maxLength,
   name,
   nolabel,
@@ -67,11 +71,13 @@ function FormField({
             <select
               id={name}
               name={name}
+              autoFocus={autoFocus}
               autoComplete="off"
               required={required}
               defaultValue={value}
               disabled={disabled}
               onChange={onChange}
+              ref={innerRef}
             >
               {children}
             </select>
@@ -80,11 +86,13 @@ function FormField({
           <textarea
             id={name}
             name={name}
+            autoFocus={autoFocus}
             autoComplete="off"
             required={required}
             disabled={disabled}
             placeholder={placeholder}
             onChange={onChange}
+            ref={innerRef}
           ></textarea>
         ) : type === "checkbox" || type == "radio" ? (
           <label className={s.checkWrapper}>
@@ -93,10 +101,12 @@ function FormField({
               id={name}
               name={name}
               value={value}
+              autoFocus={autoFocus}
               autoComplete="off"
               required={required}
               disabled={disabled}
               onChange={onChange}
+              ref={innerRef}
             />
             {text && <span dangerouslySetInnerHTML={{ __html: text }} />}
           </label>
@@ -105,22 +115,32 @@ function FormField({
             decimalSeparator=","
             thousandSeparator="."
             allowNegative={false}
+            id={name}
+            name={name}
+            autoFocus={autoFocus}
+            autoComplete="off"
             placeholder={placeholder}
             maxLength={maxLength}
             required={required}
             lang={lang}
             disabled={disabled}
             onChange={onChange}
+            getInputRef={innerRef}
           />
         ) : (
           <input
             type={type}
+            id={name}
+            name={name}
+            autoFocus={autoFocus}
+            autoComplete="off"
             placeholder={placeholder}
             maxLength={maxLength}
             required={required}
             lang={lang}
             disabled={disabled}
             onChange={onChange}
+            ref={innerRef}
           />
         )}
       </div>

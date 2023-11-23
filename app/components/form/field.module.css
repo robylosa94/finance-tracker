@@ -12,7 +12,7 @@
   input[type="number"],
   select,
   textarea {
-    @apply bg-white text-black h-[2.8125rem] w-full rounded-[.25rem] px-5 text-base block;
+    @apply bg-white text-black h-[2.8125rem] w-full rounded-[.25rem] px-5 text-base block border border-color-foreground;
   }
 
   input[type="number"] {

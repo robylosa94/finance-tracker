@@ -1,5 +1,5 @@
 .root {
-  @apply fixed top-0 left-0 w-full h-full bg-color-background/80;
+  @apply fixed top-0 left-0 w-full h-full bg-color-background/90;
 
   > div {
     @apply h-full;
@@ -11,11 +11,11 @@
 }
 
 .inner {
-  @apply bg-color-background border-2 border-color-primary rounded-3xl p-6 min-h-full;
+  @apply bg-color-background border-2 border-color-primary rounded-3xl p-6 w-full pb-8;
 }
 
 .header {
-  @apply flex items-center justify-between mb-5;
+  @apply flex items-center justify-between mb-10;
 }
 
 .headerTitle {

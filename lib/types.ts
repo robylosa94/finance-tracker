@@ -1,11 +1,12 @@
 export interface MoveTypes {
   type: MoveTypeTypes
-  isRecurrent: boolean
+  amount: number
   tag: {
     color: string
     name: string
   }
-  amount: number
+  isRecurrent?: boolean | undefined
+  createdAt: Date
 }
 
 export type MoveTypeTypes = "expense" | "income" | string
