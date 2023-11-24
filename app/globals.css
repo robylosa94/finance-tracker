@@ -11,6 +11,7 @@
   --color-primary-darker: 0, 55, 110;
   --container: 43.75rem;
   --container-gutter: 1.25rem;
+  --header-height: 5rem;
   --section-gap: 4.375rem;
 }
 

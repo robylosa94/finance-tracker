@@ -1,7 +1,7 @@
 "use client"
 
 import { MoveTypes } from "@/lib/types"
-import { currencyFormatter } from "@/lib/utils"
+import { currencyFormatter } from "@/lib/helpers"
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from "chart.js"
 import { Doughnut } from "react-chartjs-2"
 import s from "./chart.module.css"

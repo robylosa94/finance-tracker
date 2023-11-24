@@ -1,4 +1,4 @@
-import { currencyFormatter } from "@/lib/utils"
+import { currencyFormatter } from "@/lib/helpers"
 import { FiRefreshCcw } from "react-icons/fi"
 import s from "./card.module.css"
 import clsx from "clsx"
@@ -12,8 +12,8 @@ export default function MovesCard({ data }: Props) {
   const { type, isRecurrent, tag, amount } = data
 
   const rootClassName = clsx(s.root, {
-    [s.root_type_expense]: type === "expense",
-    [s.root_type_income]: type === "income",
+    [s.root_type_expense]: type === "uscita",
+    [s.root_type_income]: type === "entrata",
   })
 
   return (

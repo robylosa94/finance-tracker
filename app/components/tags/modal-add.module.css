@@ -1,0 +1,11 @@
+.buttons {
+  @apply flex mt-8;
+
+  > * {
+    @apply min-w-[6.25rem];
+
+    &:not(:last-child) {
+      @apply mr-4;
+    }
+  }
+}

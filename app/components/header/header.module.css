@@ -1,5 +1,5 @@
 .container {
-  @apply flex items-center justify-between h-20;
+  @apply flex items-center justify-between h-header-height;
 }
 
 .user {

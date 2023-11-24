@@ -9,4 +9,4 @@ export interface MoveTypes {
   createdAt: Date
 }
 
-export type MoveTypeTypes = "expense" | "income" | string
+export type MoveTypeTypes = "uscita" | "entrata" | string

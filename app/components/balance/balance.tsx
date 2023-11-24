@@ -3,51 +3,41 @@ import Button from "../button"
 import Container from "../container"
 
 import s from "./balance.module.css"
-import { currencyFormatter } from "@/lib/utils"
+import { currencyFormatter } from "@/lib/helpers"
 import { useToggleModalAddExpense, useToggleModalAddIncome } from "../context"
 import { useEffect, useState } from "react"
-import { collection, getDocs } from "firebase/firestore"
-import { db } from "@/lib/firebase"
 import clsx from "clsx"
+import { MoveTypes } from "@/lib/types"
 
-export default function Balance() {
+interface Props {
+  moves: MoveTypes[]
+}
+
+export default function Balance({ moves }: Props) {
   const toggleModalAddExpense = useToggleModalAddExpense()
   const toggleModalAddIncome = useToggleModalAddIncome()
 
-  const [movesBalance, setMovesBalance] = useState(0)
+  const [balance, setBalance] = useState(0)
 
   useEffect(() => {
-    const getMovesBalance = async () => {
-      //Get moves amount
-      const movesCollection = collection(db, "moves")
-      const querySnap = await getDocs(movesCollection)
-      const data = querySnap.docs.map((doc) => {
-        if (doc.data()["type"] === "expense") {
-          return -doc.data()["amount"]
-        } else {
-          return doc.data()["amount"]
-        }
-      })
+    const amounts = moves.map((move) => (move.type === "uscita" ? -move.amount : move.amount))
 
-      //Get moves balance
+    const getBalance = () => {
       let sum = 0
-      for (let i = 0; i < data.length; i++) {
-        sum += data[i]
+      for (let i = 0; i < amounts.length; i++) {
+        sum += amounts[i]
       }
-
-      setMovesBalance(sum)
+      setBalance(sum)
     }
 
-    getMovesBalance()
-  }, [])
+    getBalance()
+  }, [moves])
 
   return (
     <article className={s.root}>
       <Container>
         <h2 className={s.title}>Il mio saldo</h2>
-        <strong className={clsx(s.amount, { [s.amount_negative]: movesBalance < 0 })}>
-          {currencyFormatter(movesBalance)}
-        </strong>
+        <strong className={clsx(s.amount, { [s.amount_negative]: balance < 0 })}>{currencyFormatter(balance)}</strong>
         <div className={s.actions}>
           <Button Component="button" onClick={toggleModalAddExpense}>
             <IoMdAdd />

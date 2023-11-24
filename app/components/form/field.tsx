@@ -30,6 +30,7 @@ interface Props {
     | "textarea"
     | "date"
     | "time"
+    | "color"
     | "currency"
     | undefined
   value?: string | undefined

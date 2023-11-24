@@ -1,35 +1,32 @@
 import { useEffect, useState } from "react"
 import { Chart } from "."
 import Container from "../container"
-import s from "./analysis.module.css"
-import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore"
-import { db } from "@/lib/firebase"
+import Title from "../title"
+import { MoveTypes } from "@/lib/types"
 
-export default function Analysis() {
+interface Props {
+  moves: MoveTypes[]
+}
+
+export default function Analysis({ moves }: Props) {
   const [expenses, setExpenses] = useState<any[]>([])
 
   useEffect(() => {
-    const getExpenses = async () => {
-      const movesCollection = collection(db, "moves")
-      const movesQuery = query(movesCollection, where("type", "==", "expense"))
-      const querySnap = await getDocs(movesQuery)
-      const data = querySnap.docs.map((doc) => {
-        return doc.data()
-      })
-
-      setExpenses(data)
-    }
-
-    getExpenses()
-  }, [])
+    const expensesMoves = moves.filter((move) => move.type === "uscita")
+    setExpenses(expensesMoves)
+  }, [moves])
 
   return (
-    <article className={s.root}>
+    <article className="my-section-gap">
       <Container>
-        <header className={s.header}>
-          <h2 className={s.headerTitle}>Analisi uscite</h2>
+        <header className="mb-5">
+          <Title>Analisi uscite</Title>
         </header>
-        <Chart data={expenses} />
+        {expenses.length > 0 ? (
+          <Chart data={expenses} />
+        ) : (
+          <small className="text-gray-400 mt-7 block">Non ci sono uscite disponibili</small>
+        )}
       </Container>
     </article>
   )

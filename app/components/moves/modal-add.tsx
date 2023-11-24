@@ -11,14 +11,14 @@ import s from "./modal-add.module.css"
 //Firebase
 import { db } from "@/lib/firebase"
 import { collection, addDoc, getDocs, where, query } from "firebase/firestore"
-import { floatingConverter } from "@/lib/utils"
+import { floatingConverter } from "@/lib/helpers"
 
 interface Props {
   type: MoveTypeTypes
 }
 
 export default function MovesModalAdd({ type }: Props) {
-  const IS_EXPENSE = type === "expense"
+  const IS_EXPENSE = type === "uscita"
 
   const formRef = useRef<HTMLFormElement>(null)
   const [tags, setTags] = useState<any[]>([])
@@ -35,10 +35,10 @@ export default function MovesModalAdd({ type }: Props) {
 
     const data = {
       type: type,
-      amount: floatingConverter(amountInput?.value),
+      amount: floatingConverter(amountInput.value),
       tag: {
-        color: tagInput?.getAttribute("data-color"),
-        name: tagInput?.value,
+        color: tagInput.getAttribute("data-color"),
+        name: tagInput.value,
       },
       isRecurrent: recurrentInput ? recurrentInput.checked : false,
       createdAt: new Date(),

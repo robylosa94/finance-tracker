@@ -1,0 +1,23 @@
+.root {
+  @apply fixed top-0 left-0 w-full h-full flex bg-color-background z-20;
+
+  > div {
+    @apply flex flex-col items-start;
+  }
+}
+
+.header {
+  @apply flex-shrink-0 h-header-height flex justify-end items-center w-full mb-10;
+}
+
+.link {
+  @apply text-2xl mb-7;
+
+  &.link_active {
+    @apply underline underline-offset-4;
+  }
+}
+
+.button {
+  @apply mt-10;
+}

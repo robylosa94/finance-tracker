@@ -3,14 +3,21 @@
 import { createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 
 const initialContext = {
+  isMenuOpen: false,
   isModalAddExpenseOpen: false,
   isModalAddIncomeOpen: false,
+  isModalAddTagOpen: false,
 }
 
 const SiteContext = createContext({
   context: initialContext,
   setContext: (() => null) as Dispatch<
-    SetStateAction<{ isModalAddExpenseOpen: boolean; isModalAddIncomeOpen: boolean }>
+    SetStateAction<{
+      isMenuOpen: boolean
+      isModalAddExpenseOpen: boolean
+      isModalAddIncomeOpen: boolean
+      isModalAddTagOpen: boolean
+    }>
   >,
 })
 
@@ -47,6 +54,20 @@ export function useSiteContext() {
   return context
 }
 
+export function useToggleMenu() {
+  const {
+    context: { isMenuOpen },
+    setContext,
+  } = useContext(SiteContext)
+
+  async function toggleMenu() {
+    setContext((prevState) => {
+      return { ...prevState, isMenuOpen: !isMenuOpen }
+    })
+  }
+  return toggleMenu
+}
+
 export function useToggleModalAddExpense() {
   const {
     context: { isModalAddExpenseOpen },
@@ -73,4 +94,18 @@ export function useToggleModalAddIncome() {
     })
   }
   return toggleModalAddIncome
+}
+
+export function useToggleModalAddTag() {
+  const {
+    context: { isModalAddTagOpen },
+    setContext,
+  } = useContext(SiteContext)
+
+  async function toggleModalAddTag() {
+    setContext((prevState) => {
+      return { ...prevState, isModalAddTagOpen: !isModalAddTagOpen }
+    })
+  }
+  return toggleModalAddTag
 }

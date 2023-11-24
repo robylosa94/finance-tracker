@@ -19,6 +19,7 @@ const config: Config = {
       spacing: {
         container: "var(--container)",
         "container-gutter": "var(--container-gutter)",
+        "header-height": "var(--header-height)",
         "section-gap": "var(--section-gap)",
       },
       transitionDuration: {

@@ -1,3 +1,6 @@
 export { default as Card } from "./card"
+export { default as Filters } from "./filters"
+export { default as Filter } from "./filter"
 export { default as Latest } from "./latest"
+export { default as List } from "./list"
 export { default as ModalAdd } from "./modal-add"

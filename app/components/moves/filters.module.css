@@ -1,0 +1,12 @@
+.root {
+  @apply mb-7;
+}
+
+.form {
+  --gap: 0.625rem;
+  @apply flex -mx-[var(--gap)];
+
+  > * {
+    @apply px-[var(--gap)] mb-0;
+  }
+}

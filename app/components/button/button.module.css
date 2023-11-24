@@ -1,4 +1,6 @@
 .root {
+  @apply inline-block;
+
   &.variant_outlined {
     > * {
       @apply bg-transparent border border-gray-400 text-color-foreground hover:bg-color-background-darkest focus-visible:outline-gray-400;
@@ -6,12 +8,12 @@
   }
 
   &.variant_danger {
-    --color-primary: #ff3155;
-    --color-primary-darker: #d50025;
+    --color-primary: 255, 49, 85;
+    --color-primary-darker: 213, 0, 37;
   }
 
   > * {
-    @apply inline-flex items-center justify-center rounded-md text-white bg-color-primary px-4 h-11 text-sm font-semibold hover:bg-color-primary-darker focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-color-primary transition-colors text-center w-full;
+    @apply flex items-center justify-center rounded-md text-white bg-color-primary px-4 h-11 text-sm font-semibold hover:bg-color-primary-darker focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-color-primary transition-colors text-center w-full;
   }
 
   svg {

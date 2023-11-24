@@ -11,3 +11,18 @@ export const floatingConverter = (amount: string) => {
   const amountWithoutDots = amount.replace(/\./g, "")
   return parseFloat(amountWithoutDots.replace(",", "."))
 }
+
+export const monthNames = [
+  "Gennaio",
+  "Febbraio",
+  "Marzo",
+  "Aprile",
+  "Maggio",
+  "Giugno",
+  "Luglio",
+  "Agosto",
+  "Settembre",
+  "Ottobre",
+  "Novembre",
+  "Dicembre",
+]

@@ -1,8 +1,6 @@
 .root {
   @apply mb-4 last:mb-0 w-full;
 
-  @apply md:mb-5;
-
   &.root_50 {
     @apply md:w-1/2;
   }
@@ -31,7 +29,7 @@
 }
 
 .label {
-  @apply text-base block mb-3;
+  @apply text-base block mb-2;
 }
 
 .selectWrapper {

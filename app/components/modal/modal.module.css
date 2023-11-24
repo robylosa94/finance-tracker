@@ -1,5 +1,5 @@
 .root {
-  @apply fixed top-0 left-0 w-full h-full bg-color-background/90;
+  @apply fixed top-0 left-0 w-full h-full bg-color-background/90 z-10;
 
   > div {
     @apply h-full;

@@ -1,45 +1,33 @@
 "use client"
 
 import Container from "../container"
-import s from "./latest.module.css"
 import ArrowLink from "../arrow-link"
-import MovesCard from "./card"
-import { query, orderBy, limit, collection, getDocs } from "firebase/firestore"
-import { db } from "@/lib/firebase"
 import { useEffect, useState } from "react"
+import { movesUrl } from "@/lib/urls"
+import Title from "../title"
+import MovesList from "./list"
+import { MoveTypes } from "@/lib/types"
 
-export default function MovesLatest() {
-  const [latestMoves, setLatestMoves] = useState<any[]>([])
+interface Props {
+  moves: MoveTypes[]
+}
+
+export default function MovesLatest({ moves }: Props) {
+  const [latest, setLatest] = useState<any[]>([])
 
   useEffect(() => {
-    const getLatestMoves = async () => {
-      const movesCollection = collection(db, "moves")
-      const movesQuery = query(movesCollection, orderBy("createdAt", "desc"), limit(3))
-      const querySnap = await getDocs(movesQuery)
-      const data = querySnap.docs.map((doc) => {
-        return doc.data()
-      })
-
-      setLatestMoves(data)
-    }
-
-    getLatestMoves()
-  }, [])
+    const latestMoves = moves.sort((a: any, b: any) => b.createdAt - a.createdAt).slice(0, 3)
+    setLatest(latestMoves)
+  }, [moves])
 
   return (
-    <article className={s.root}>
+    <article className="my-section-gap">
       <Container>
-        <header className={s.header}>
-          <h2 className={s.headerTitle}>Ultimi movimenti</h2>
-          <ArrowLink href="#">Vedi tutti</ArrowLink>
+        <header className="flex items-baseline justify-between mb-5">
+          <Title>Ultimi movimenti</Title>
+          {latest.length > 0 && <ArrowLink href={movesUrl()}>Vedi tutti</ArrowLink>}
         </header>
-        <ul className={s.list}>
-          {latestMoves.map((item, idx) => (
-            <li key={idx} className={s.item}>
-              <MovesCard data={item} />
-            </li>
-          ))}
-        </ul>
+        <MovesList moves={latest} />
       </Container>
     </article>
   )
