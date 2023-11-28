@@ -9,7 +9,7 @@ import MovesList from "./list"
 import { useFirebaseCollections } from "../firebase-context"
 
 export default function MovesLatest() {
-  const { moves } = useFirebaseCollections()
+  const { moves, loadingData } = useFirebaseCollections()
 
   const [latest, setLatest] = useState<any[]>([])
 
@@ -25,7 +25,7 @@ export default function MovesLatest() {
           <Title>Ultimi movimenti</Title>
           {latest.length > 0 && <ArrowLink href={movesUrl()}>Vedi tutti</ArrowLink>}
         </header>
-        <MovesList moves={latest} />
+        {loadingData ? <span>Loading...</span> : <MovesList moves={latest} />}
       </Container>
     </article>
   )

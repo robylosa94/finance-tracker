@@ -12,7 +12,7 @@ import { useFirebaseCollections } from "../components/firebase-context"
 const ModalAddTag = dynamic(() => import("../components/tags/modal-add"), { ssr: false })
 
 export default function Tag() {
-  const { tags } = useFirebaseCollections()
+  const { tags, loadingData } = useFirebaseCollections()
 
   const { isModalAddTagOpen } = useSiteContext()
   const toggleModalAddTag = useToggleModalAddTag()
@@ -24,12 +24,24 @@ export default function Tag() {
           <header className="mb-5">
             <Title Component="h1">Gestione tag</Title>
           </header>
-          {tags.map((tag: any, idx) => (
-            <div key={idx}>
-              <span>{tag.color}</span>
-              <span>{tag.name}</span>
-            </div>
-          ))}
+          {loadingData ? (
+            <div>Loading...</div>
+          ) : (
+            <>
+              {tags.length > 0 ? (
+                <>
+                  {tags.map((tag: any, idx) => (
+                    <div key={idx}>
+                      <span>{tag.color}</span>
+                      <span>{tag.name}</span>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <small className="text-gray-400 mt-7 block">Non ci sono tag disponibili</small>
+              )}
+            </>
+          )}
           <Button Component="button" onClick={toggleModalAddTag}>
             <IoMdAdd />
             Crea

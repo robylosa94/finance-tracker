@@ -5,7 +5,7 @@ import Title from "../title"
 import { useFirebaseCollections } from "../firebase-context"
 
 export default function Analysis() {
-  const { moves } = useFirebaseCollections()
+  const { moves, loadingData } = useFirebaseCollections()
 
   const [expenses, setExpenses] = useState<any[]>([])
 
@@ -20,10 +20,16 @@ export default function Analysis() {
         <header className="mb-5">
           <Title>Analisi uscite</Title>
         </header>
-        {expenses.length > 0 ? (
-          <Chart data={expenses} />
+        {loadingData ? (
+          <span>Loading...</span>
         ) : (
-          <small className="text-gray-400 mt-7 block">Non ci sono uscite disponibili</small>
+          <>
+            {expenses.length > 0 ? (
+              <Chart data={expenses} />
+            ) : (
+              <small className="text-gray-400 mt-7 block">Non ci sono uscite disponibili</small>
+            )}
+          </>
         )}
       </Container>
     </article>

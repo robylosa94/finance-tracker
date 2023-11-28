@@ -4,6 +4,7 @@ import clsx from "clsx"
 import { memo } from "react"
 import { NumericFormat } from "react-number-format"
 import s from "./field.module.css"
+import { IoIosArrowDown } from "react-icons/io"
 
 interface Props {
   autoFocus?: boolean | undefined
@@ -82,6 +83,7 @@ function FormField({
             >
               {children}
             </select>
+            <IoIosArrowDown />
           </div>
         ) : type === "textarea" ? (
           <textarea

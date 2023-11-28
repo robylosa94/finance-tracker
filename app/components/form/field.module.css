@@ -36,12 +36,10 @@
   @apply relative;
 
   select {
-    @apply appearance-none;
+    @apply appearance-none pr-9;
   }
 
   svg {
-    @apply absolute top-1/2 -translate-y-1/2 right-5 z-[1] pointer-events-none;
-
-    @apply max-md:w-3;
+    @apply text-black absolute top-1/2 -translate-y-1/2 right-3 z-[1] pointer-events-none;
   }
 }

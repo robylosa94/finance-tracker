@@ -9,7 +9,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 interface FirebaseCollectionsContextType {
   moves: MoveTypes[]
   tags: TagTypes[]
-  loading: boolean
+  loadingData: boolean
 }
 
 // Crea un context con il tipo appropriato
@@ -32,7 +32,7 @@ interface Props {
 export const FirebaseCollectionsProvider = ({ children }: Props) => {
   const [moves, setMoves] = useState<MoveTypes[]>([])
   const [tags, setTags] = useState<TagTypes[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loadingData, setLoadingData] = useState(true)
 
   useEffect(() => {
     const movesRef = collection(db, "moves")
@@ -46,7 +46,7 @@ export const FirebaseCollectionsProvider = ({ children }: Props) => {
 
       setMoves(newMoves)
       setTags(newTags)
-      setLoading(false)
+      setLoadingData(false)
 
       writeToCache(newMoves, newTags)
     }
@@ -77,7 +77,7 @@ export const FirebaseCollectionsProvider = ({ children }: Props) => {
   const contextValue: FirebaseCollectionsContextType = {
     moves,
     tags,
-    loading,
+    loadingData,
   }
 
   return <FirebaseCollectionsContext.Provider value={contextValue}>{children}</FirebaseCollectionsContext.Provider>

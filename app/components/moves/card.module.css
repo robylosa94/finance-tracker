@@ -3,11 +3,11 @@
 }
 
 .tag {
-  @apply flex items-center;
+  @apply flex items-center flex-wrap;
+}
 
-  > span {
-    @apply w-3 h-3 rounded-full flex-shrink-0 mr-2;
-  }
+.tagColor {
+  @apply w-3 h-3 rounded-full flex-shrink-0 mr-2;
 }
 
 .amount {
@@ -34,4 +34,8 @@
 
 .recurrentIcon {
   @apply flex-shrink-0 w-[0.875rem] h-[0.875rem] mr-3;
+}
+
+.date {
+  @apply w-full text-[0.6875rem] text-left leading-[1] mb-2;
 }

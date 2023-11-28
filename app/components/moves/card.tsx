@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function MovesCard({ data }: Props) {
-  const { type, isRecurrent, tag, amount } = data
+  const { type, isRecurrent, tag, amount, createdAt } = data
 
   const rootClassName = clsx(s.root, {
     [s.root_type_expense]: type === "uscita",
@@ -19,7 +19,8 @@ export default function MovesCard({ data }: Props) {
   return (
     <button className={rootClassName}>
       <span className={s.tag}>
-        <span style={{ backgroundColor: tag.color }}></span>
+        <span className={s.date}>{createdAt.toLocaleDateString()}</span>
+        <span className={s.tagColor} style={{ backgroundColor: tag.color }}></span>
         {tag.name}
       </span>
       <div className={s.amount}>

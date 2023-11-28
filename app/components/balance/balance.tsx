@@ -10,7 +10,7 @@ import clsx from "clsx"
 import { useFirebaseCollections } from "../firebase-context"
 
 export default function Balance() {
-  const { moves } = useFirebaseCollections()
+  const { moves, loadingData } = useFirebaseCollections()
 
   const toggleModalAddExpense = useToggleModalAddExpense()
   const toggleModalAddIncome = useToggleModalAddIncome()
@@ -35,7 +35,9 @@ export default function Balance() {
     <article className={s.root}>
       <Container>
         <h2 className={s.title}>Il mio saldo</h2>
-        <strong className={clsx(s.amount, { [s.amount_negative]: balance < 0 })}>{currencyFormatter(balance)}</strong>
+        <strong className={clsx(s.amount, { [s.amount_negative]: balance < 0 })}>
+          {loadingData ? <small>Loading...</small> : currencyFormatter(balance)}
+        </strong>
         <div className={s.actions}>
           <Button Component="button" onClick={toggleModalAddExpense}>
             <IoMdAdd />
