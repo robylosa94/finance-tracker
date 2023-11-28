@@ -6,13 +6,11 @@ import { useEffect, useState } from "react"
 import { movesUrl } from "@/lib/urls"
 import Title from "../title"
 import MovesList from "./list"
-import { MoveTypes } from "@/lib/types"
+import { useFirebaseCollections } from "../firebase-context"
 
-interface Props {
-  moves: MoveTypes[]
-}
+export default function MovesLatest() {
+  const { moves } = useFirebaseCollections()
 
-export default function MovesLatest({ moves }: Props) {
   const [latest, setLatest] = useState<any[]>([])
 
   useEffect(() => {

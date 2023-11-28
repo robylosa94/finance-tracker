@@ -1,17 +1,18 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Modal from "../modal"
 import FormField from "../form"
-import { MoveTypeTypes } from "@/lib/types"
+import { MoveTypeTypes, TagTypes } from "@/lib/types"
 import { useToggleModalAddExpense, useToggleModalAddIncome } from "../context"
 import Button from "../button"
 import s from "./modal-add.module.css"
 
 //Firebase
 import { db } from "@/lib/firebase"
-import { collection, addDoc, getDocs, where, query } from "firebase/firestore"
+import { collection, addDoc } from "firebase/firestore"
 import { floatingConverter } from "@/lib/helpers"
+import { useFirebaseCollections } from "../firebase-context"
 
 interface Props {
   type: MoveTypeTypes
@@ -21,7 +22,8 @@ export default function MovesModalAdd({ type }: Props) {
   const IS_EXPENSE = type === "uscita"
 
   const formRef = useRef<HTMLFormElement>(null)
-  const [tags, setTags] = useState<any[]>([])
+  const { tags } = useFirebaseCollections()
+  const [tagsForType, setTagsForType] = useState<TagTypes[]>([])
 
   const toggleModalAddExpense = useToggleModalAddExpense()
   const toggleModalAddIncome = useToggleModalAddIncome()
@@ -55,19 +57,14 @@ export default function MovesModalAdd({ type }: Props) {
   }
 
   useEffect(() => {
-    const getTags = async () => {
-      const tagsCollection = collection(db, "tags")
-      const tagsQuery = query(tagsCollection, where("type", "==", type))
-      const querySnap = await getDocs(tagsQuery)
-      const data = querySnap.docs.map((doc) => {
-        return doc.data()
-      })
-
-      setTags(data)
+    if (IS_EXPENSE) {
+      const expenseTags = tags.filter((tag) => tag.type === "uscita")
+      setTagsForType(expenseTags)
+    } else {
+      const incomeTags = tags.filter((tag) => tag.type === "entrata")
+      setTagsForType(incomeTags)
     }
-
-    getTags()
-  }, [])
+  }, [tags])
 
   return (
     <Modal
@@ -78,7 +75,7 @@ export default function MovesModalAdd({ type }: Props) {
         <input type="hidden" name="type" value={type} />
         <FormField type="currency" title="Importo" name="amount" autoFocus required />
         <span>Tag*</span>
-        {tags.map((tag: any, idx) => (
+        {tagsForType.map((tag: any, idx) => (
           <label key={idx}>
             <input type="radio" name="tag" value={tag.name} data-color={tag.color} required />
             <span>{tag.name}</span>

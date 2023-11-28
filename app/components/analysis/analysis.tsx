@@ -2,13 +2,11 @@ import { useEffect, useState } from "react"
 import { Chart } from "."
 import Container from "../container"
 import Title from "../title"
-import { MoveTypes } from "@/lib/types"
+import { useFirebaseCollections } from "../firebase-context"
 
-interface Props {
-  moves: MoveTypes[]
-}
+export default function Analysis() {
+  const { moves } = useFirebaseCollections()
 
-export default function Analysis({ moves }: Props) {
   const [expenses, setExpenses] = useState<any[]>([])
 
   useEffect(() => {

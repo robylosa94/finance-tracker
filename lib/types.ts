@@ -1,12 +1,15 @@
 export interface MoveTypes {
   type: MoveTypeTypes
   amount: number
-  tag: {
-    color: string
-    name: string
-  }
+  tag: TagTypes
   isRecurrent?: boolean | undefined
   createdAt: Date
 }
 
 export type MoveTypeTypes = "uscita" | "entrata" | string
+
+export interface TagTypes {
+  color: string
+  name: string
+  type: MoveTypeTypes
+}

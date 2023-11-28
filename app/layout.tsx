@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google"
 import "./globals.css"
 import Header from "./components/header"
 import { SiteContextProvider } from "./components/context"
+import { FirebaseCollectionsProvider } from "./components/firebase-context"
 
 const manrope = Manrope({ subsets: ["latin"] })
 
@@ -17,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={manrope.className}>
         <SiteContextProvider>
           <Header />
-          {children}
+          <FirebaseCollectionsProvider>{children}</FirebaseCollectionsProvider>
         </SiteContextProvider>
       </body>
     </html>

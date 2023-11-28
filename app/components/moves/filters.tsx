@@ -1,15 +1,12 @@
-import { MoveTypes } from "@/lib/types"
 import { useEffect, useState } from "react"
 import { monthNames } from "@/lib/helpers"
 import { Filter } from "."
 import s from "./filters.module.css"
+import { useFirebaseCollections } from "../firebase-context"
 
-interface Props {
-  moves: MoveTypes[]
-  submitHandler: any
-}
+export default function MovesFilters() {
+  const { moves } = useFirebaseCollections()
 
-export default function MovesFilters({ moves, submitHandler }: Props) {
   const [monthFilter, setMonthFilter] = useState<any[]>([])
   const [yearFilter, setYearFilter] = useState<any[]>([])
   const [typeFilter, setTypeFilter] = useState<any[]>([])
@@ -46,7 +43,7 @@ export default function MovesFilters({ moves, submitHandler }: Props) {
 
   return (
     <div className={s.root}>
-      <form className={s.form} onSubmit={submitHandler}>
+      <form className={s.form}>
         <Filter filter={yearFilter} title="Anno" />
         <Filter filter={monthFilter} title="Mese" />
         <Filter filter={typeFilter} title="Tipologia" />

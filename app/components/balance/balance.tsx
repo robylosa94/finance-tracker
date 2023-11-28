@@ -7,13 +7,11 @@ import { currencyFormatter } from "@/lib/helpers"
 import { useToggleModalAddExpense, useToggleModalAddIncome } from "../context"
 import { useEffect, useState } from "react"
 import clsx from "clsx"
-import { MoveTypes } from "@/lib/types"
+import { useFirebaseCollections } from "../firebase-context"
 
-interface Props {
-  moves: MoveTypes[]
-}
+export default function Balance() {
+  const { moves } = useFirebaseCollections()
 
-export default function Balance({ moves }: Props) {
   const toggleModalAddExpense = useToggleModalAddExpense()
   const toggleModalAddIncome = useToggleModalAddIncome()
 

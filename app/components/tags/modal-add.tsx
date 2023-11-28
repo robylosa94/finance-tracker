@@ -1,15 +1,14 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import Modal from "../modal"
 import FormField from "../form"
 import { useToggleModalAddTag } from "../context"
 import Button from "../button"
-import s from "./modal-add.module.css"
-
-//Firebase
 import { db } from "@/lib/firebase"
 import { collection, addDoc } from "firebase/firestore"
+
+import s from "./modal-add.module.css"
 
 export default function MovesModalAdd() {
   const formRef = useRef<HTMLFormElement>(null)
